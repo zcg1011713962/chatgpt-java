@@ -1,7 +1,0 @@
-com\chat\service\impl\ChatServiceImpl.class
-com\chat\properties\OpenAIProperties.class
-com\chat\config\TaskThreadPoolConfig$TaskExecutorFactory.class
-com\chat\properties\ThreadPoolProperties.class
-com\chat\config\TaskThreadPoolConfig$TaskExecutorRejectedExecution.class
-com\chat\config\TaskThreadPoolConfig.class
-com\chat\config\TaskThreadPoolConfig$1.class
