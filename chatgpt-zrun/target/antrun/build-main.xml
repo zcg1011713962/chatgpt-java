@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="maven-antrun-" default="main"  >
+<target name="main">
+  <copy todir="D:\coding\chatgpt-java\chatgpt-zrun\target/lib">
+    <fileset dir="D:\coding\chatgpt-java\chatgpt-zrun\target">
+      <include name="chatgpt-zrun-1.0.jar"/>
+    </fileset>
+  </copy>
+</target>
+</project>

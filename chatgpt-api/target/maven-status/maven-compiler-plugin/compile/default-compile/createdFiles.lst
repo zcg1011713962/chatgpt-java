@@ -1,0 +1,11 @@
+com\chat\bean\ChatRequest$Messages.class
+com\chat\bean\ChatResponse$Choices.class
+com\chat\bean\ChatResponse.class
+com\chat\bean\ChatRequest.class
+com\chat\bean\Response.class
+com\chat\bean\ChatResponse$Choices$Message.class
+com\chat\bean\ModelResponse$Permission.class
+com\chat\bean\ModelResponse.class
+com\chat\bean\Request.class
+com\chat\service\ChatService.class
+com\chat\bean\ChatResponse$Usage.class
