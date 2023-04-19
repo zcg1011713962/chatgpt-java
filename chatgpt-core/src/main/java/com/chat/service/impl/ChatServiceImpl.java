@@ -1,14 +1,12 @@
 package com.chat.service.impl;
 
-import cn.hutool.json.JSONObject;
-import com.chat.bean.ChatResponse;
+import cn.hutool.json.JSONUtil;
 import com.chat.bean.ChatRequest;
+import com.chat.bean.ChatResponse;
 import com.chat.bean.Response;
 import com.chat.exception.FutureException;
 import com.chat.properties.OpenAIProperties;
 import com.chat.service.ChatService;
-import cn.hutool.json.JSON;
-import cn.hutool.json.JSONUtil;
 import com.chat.util.HttpUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

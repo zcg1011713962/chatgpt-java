@@ -23,13 +23,12 @@ public class HttpUtil implements ThreadFactory {
     }
 
     private static void init() {
-
         asyncHttpClient = build(config()
                 .setMaxRequestRetry(3)
-                .setRequestTimeout(30_000)
-                .setReadTimeout(30_000)
+                .setRequestTimeout(60_000)
+                .setReadTimeout(60_000)
                 .setKeepAlive(true)
-                .setConnectTimeout(30_000)
+                .setConnectTimeout(60_000)
                 /*.setEventLoopGroup(new NioEventLoopGroup(2*4))*/
                 .setThreadFactory(HTTP_UTIL)
         );

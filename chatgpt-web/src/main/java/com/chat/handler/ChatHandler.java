@@ -24,11 +24,9 @@ public class ChatHandler {
         ChatResponse chatResponse= null;
         try {
             chatResponse = chatService.completions(chatRequest).get();
-            log.info("{}", chatResponse);
         } catch (Exception e) {
            log.error("{}", e);
         }
-        log.info("{}", chatResponse);
         return Mono.just(chatResponse);
     }
 
