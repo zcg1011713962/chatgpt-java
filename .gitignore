@@ -1,2 +1,3 @@
 /.idea/
 /*/target/
+/chatgpt-zrun/src/main/resources/application.yml
