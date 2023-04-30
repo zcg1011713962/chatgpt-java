@@ -31,16 +31,16 @@ chatgpt机器人整合了openAI接口，通过代理服务实现中美互联,  �
 #### 3.1.1 程序运行步骤说明
 
 1. 拉取代码
-
+```
    git clone  git@github.com:zcg1011713962/chatgpt-java.git
-
+```
 2. 修改配置
 
    chatgpt-zrun/src/main/resources/application.yml
 
    添加openai鉴权密钥 
 
-   ![1682862401272](assets/1682862401272.png)
+   ![1682862381218](assets/1682862381218.png)
 
 ​    3.运行启动类  com.chat.Main.java
 
@@ -51,9 +51,9 @@ chatgpt机器人整合了openAI接口，通过代理服务实现中美互联,  �
 #### 3.2.1 程序运行步骤说明
 
 1.拉取代码
-
-​    git clone  git@github.com:zcg1011713962/chatgpt-boodstrap.git
-
+```
+    git clone  git@github.com:zcg1011713962/chatgpt-boodstrap.git
+```
 2.修改配置
 
 chatgpt-boodstrap/js/chat.js
