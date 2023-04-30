@@ -66,7 +66,7 @@ var api_address // API接口地址
 var token // openai鉴权token
 ```
 
-![1682862381218](assets/1682862381218.png)
+![1682862714858](assets/1682862714858.png)
 
 3.运行chatgpt-boodstrap/chat.html
 
