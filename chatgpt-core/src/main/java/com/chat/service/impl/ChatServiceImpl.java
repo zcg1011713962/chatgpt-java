@@ -1,9 +1,7 @@
 package com.chat.service.impl;
 
 import cn.hutool.json.JSONUtil;
-import com.chat.bean.ChatRequest;
-import com.chat.bean.ChatResponse;
-import com.chat.bean.Response;
+import com.chat.bean.*;
 import com.chat.exception.FutureException;
 import com.chat.properties.OpenAIProperties;
 import com.chat.service.ChatService;
@@ -22,11 +20,12 @@ public class ChatServiceImpl<T extends Response> implements ChatService<Response
     private static final String AUTHORIZATION = "Authorization";
     private static final String API_COMPLETIONS = "/v1/chat/completions";
     private static final String API_MODELS = "/v1/models/davinci";
+    private static final String API_IMAGES_GENERATIONS = "/v1/images/generations";
 
     @Override
     public CompletableFuture<Response> completions(ChatRequest chatRequest) {
         String parms = JSONUtil.toJsonStr(chatRequest);
-        log.info("{}", parms);
+        log.info("completions:{}", parms);
         String url = new StringBuffer().append(openAIProperties.getApiBaseUrl()).append(API_COMPLETIONS).toString();
         return HttpUtil.asyncHttpClient().preparePost(url)
                 .setHeader(AUTHORIZATION, openAIProperties.getAuthorization())
@@ -61,8 +60,24 @@ public class ChatServiceImpl<T extends Response> implements ChatService<Response
     }
 
     @Override
-    public CompletableFuture<Response> createImages() {
-        return null;
+    public CompletableFuture<Response> createImages(ImageRequest imageRequest) {
+        String parms = JSONUtil.toJsonStr(imageRequest);
+        log.info("createImages: {}", parms);
+        String url = new StringBuffer().append(openAIProperties.getApiBaseUrl()).append(API_IMAGES_GENERATIONS).toString();
+        return HttpUtil.asyncHttpClient().preparePost(url)
+                .setHeader(AUTHORIZATION, openAIProperties.getAuthorization())
+                .setHeader("Content-Type","application/json")
+                .setBody(parms)
+                .execute().toCompletableFuture()
+                .thenApplyAsync(f ->{
+                    String body = f.getResponseBody();
+                    log.info("{}", body);
+                    Response response = JSONUtil.toBean(body, ImageResponse.class);
+                    return response;
+                }).exceptionally((e)->{
+                    log.error("{}", e);
+                    throw new FutureException(e.getMessage());
+                });
     }
 
     @Override

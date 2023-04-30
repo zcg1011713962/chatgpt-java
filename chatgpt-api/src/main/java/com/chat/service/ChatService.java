@@ -1,6 +1,7 @@
 package com.chat.service;
 
 import com.chat.bean.ChatRequest;
+import com.chat.bean.ImageRequest;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -21,7 +22,7 @@ public interface ChatService<T> {
      * 创建图像
      * @return
      */
-    CompletableFuture<T> createImages();
+    CompletableFuture<T> createImages(ImageRequest imageRequest);
 
     /**
      * 创建图像编辑

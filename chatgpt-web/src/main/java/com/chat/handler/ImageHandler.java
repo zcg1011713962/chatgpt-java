@@ -1,7 +1,5 @@
 package com.chat.handler;
 
-import com.chat.bean.ChatRequest;
-import com.chat.bean.ChatResponse;
 import com.chat.bean.ImageRequest;
 import com.chat.bean.ImageResponse;
 import com.chat.service.ChatService;
@@ -14,22 +12,21 @@ import reactor.core.publisher.Mono;
 
 @RestController
 @Slf4j
-public class ChatHandler {
+public class ImageHandler {
     @Autowired
-    private ChatService<ChatResponse> chatService;
+    private ChatService<ImageResponse> chatService;
 
-    @PostMapping("/v1/chat/completions")
-    Mono<ChatResponse> chat(@RequestBody ChatRequest chatRequest) {
-        log.info("{}", chatRequest);
-        ChatResponse chatResponse= null;
+    @PostMapping("/v1/images/generations")
+    Mono<ImageResponse> createImages(@RequestBody ImageRequest imageRequest) {
+        log.info("{}", imageRequest);
+        ImageResponse imageResponse= null;
         try {
-            chatResponse = chatService.completions(chatRequest).get();
+            imageResponse = chatService.createImages(imageRequest).get();
         } catch (Exception e) {
-           log.error("{}", e);
+            log.error("{}", e);
         }
-        return Mono.just(chatResponse);
+        return Mono.just(imageResponse);
     }
-
 
 
 }

@@ -8,7 +8,6 @@
     </formats>
     <includeBaseDirectory>false
     </includeBaseDirectory>
-
     <fileSets>
         <fileSet>
             <directory>src/main/resources</directory>
@@ -35,5 +34,4 @@
             <fileMode>0755</fileMode>
         </fileSet>
     </fileSets>
-
 </assembly>
