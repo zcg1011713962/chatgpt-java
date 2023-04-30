@@ -1,0 +1,11 @@
+server:
+  port: 19000 #工程端口
+logging:
+    level:
+      root: info
+    file:
+      path: log
+open:
+  ai:
+    apiBaseUrl: https://api.openai.com
+    authorization: 
