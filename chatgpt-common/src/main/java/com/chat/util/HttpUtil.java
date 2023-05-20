@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.asynchttpclient.AsyncHttpClient;
 import org.asynchttpclient.DefaultAsyncHttpClient;
 import org.asynchttpclient.DefaultAsyncHttpClientConfig;
+import org.asynchttpclient.proxy.ProxyServer;
 
 import javax.net.ssl.SSLException;
 import java.util.concurrent.ThreadFactory;
@@ -31,6 +32,7 @@ public class HttpUtil implements ThreadFactory {
                 .setConnectTimeout(60_000)
                 /*.setEventLoopGroup(new NioEventLoopGroup(2*4))*/
                 .setThreadFactory(HTTP_UTIL)
+                //.setProxyServer(new ProxyServer.Builder("127.0.0.1", 33210).build())
         );
     }
 

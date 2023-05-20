@@ -15,7 +15,7 @@ public class ImageRequest extends Request{
     // 生成图片n张
     private int n;
     // 图片尺寸 '256x256', '512x512', '1024x1024'
-    private String size = "1024x1024";
+    private String size = "512x512";
 
 
 }

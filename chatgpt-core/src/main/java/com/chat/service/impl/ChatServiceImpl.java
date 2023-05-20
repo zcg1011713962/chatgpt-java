@@ -1,5 +1,6 @@
 package com.chat.service.impl;
 
+import cn.hutool.http.HttpStatus;
 import cn.hutool.json.JSONUtil;
 import com.chat.bean.*;
 import com.chat.exception.FutureException;
@@ -14,7 +15,7 @@ import java.util.concurrent.CompletableFuture;
 
 @Slf4j
 @Service
-public class ChatServiceImpl<T extends Response> implements ChatService<Response> {
+public class ChatServiceImpl<T extends BaseResponse> implements ChatService<BaseResponse> {
     @Autowired(required = false)
     private OpenAIProperties openAIProperties;
     private static final String AUTHORIZATION = "Authorization";
@@ -23,7 +24,7 @@ public class ChatServiceImpl<T extends Response> implements ChatService<Response
     private static final String API_IMAGES_GENERATIONS = "/v1/images/generations";
 
     @Override
-    public CompletableFuture<Response> completions(ChatRequest chatRequest) {
+    public CompletableFuture<BaseResponse> completions(ChatRequest chatRequest) {
         String parms = JSONUtil.toJsonStr(chatRequest);
         log.info("completions:{}", parms);
         String url = new StringBuffer().append(openAIProperties.getApiBaseUrl()).append(API_COMPLETIONS).toString();
@@ -36,7 +37,10 @@ public class ChatServiceImpl<T extends Response> implements ChatService<Response
                     String body = f.getResponseBody();
                     log.info("{}", body);
                     Response response = JSONUtil.toBean(body, ChatResponse.class);
-                    return response;
+                    return new BaseResponse.Builder()
+                            .code(HttpStatus.HTTP_OK)
+                            .data(response)
+                            .build();
                 }).exceptionally((e)->{
                     log.error("{}", e);
                     throw new FutureException(e.getMessage());
@@ -44,7 +48,7 @@ public class ChatServiceImpl<T extends Response> implements ChatService<Response
     }
 
     @Override
-    public CompletableFuture<Response> models() {
+    public CompletableFuture<BaseResponse> models() {
         String url = new StringBuffer().append(openAIProperties.getApiBaseUrl()).append(API_MODELS).toString();
         return HttpUtil.asyncHttpClient().prepareGet(url)
                 .setHeader(AUTHORIZATION, openAIProperties.getAuthorization())
@@ -52,7 +56,10 @@ public class ChatServiceImpl<T extends Response> implements ChatService<Response
                 .thenApplyAsync(f ->{
                     String body = f.getResponseBody();
                     Response response = JSONUtil.toBean(body, Response.class);
-                    return response;
+                    return new BaseResponse.Builder()
+                            .code(HttpStatus.HTTP_OK)
+                            .data(response)
+                            .build();
                 }).exceptionally((e)->{
                     log.error("{}", e);
                     throw new FutureException(e.getMessage());
@@ -60,7 +67,7 @@ public class ChatServiceImpl<T extends Response> implements ChatService<Response
     }
 
     @Override
-    public CompletableFuture<Response> createImages(ImageRequest imageRequest) {
+    public CompletableFuture<BaseResponse> createImages(ImageRequest imageRequest) {
         String parms = JSONUtil.toJsonStr(imageRequest);
         log.info("createImages: {}", parms);
         String url = new StringBuffer().append(openAIProperties.getApiBaseUrl()).append(API_IMAGES_GENERATIONS).toString();
@@ -73,7 +80,10 @@ public class ChatServiceImpl<T extends Response> implements ChatService<Response
                     String body = f.getResponseBody();
                     log.info("{}", body);
                     Response response = JSONUtil.toBean(body, ImageResponse.class);
-                    return response;
+                    return new BaseResponse.Builder()
+                            .code(HttpStatus.HTTP_OK)
+                            .data(response)
+                            .build();
                 }).exceptionally((e)->{
                     log.error("{}", e);
                     throw new FutureException(e.getMessage());
@@ -81,7 +91,7 @@ public class ChatServiceImpl<T extends Response> implements ChatService<Response
     }
 
     @Override
-    public CompletableFuture<Response> imagesEdits() {
+    public CompletableFuture<BaseResponse> imagesEdits() {
         return null;
     }
 }
