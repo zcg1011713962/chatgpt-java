@@ -13,6 +13,7 @@ public class ChatResponse extends Response{
 
     private Usage usage;
     private Choices[] choices;
+    private Error error;
 
     @Data
     @AllArgsConstructor
@@ -40,5 +41,17 @@ public class ChatResponse extends Response{
             private String role;
             private String content;
         }
+    }
+
+
+    @Data
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @ToString
+    public static class Error{
+        private String message;
+        private String type;
+        private Object param;
+        private Object code;
     }
 }

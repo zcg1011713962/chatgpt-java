@@ -23,7 +23,7 @@ public class GlobalException {
         }
         return new BaseResponse.Builder()
                 .code(HttpStatus.HTTP_INTERNAL_ERROR)
-                .data(ex.getMessage())
+                .message(ex.getMessage())
                 .build();
     }
 

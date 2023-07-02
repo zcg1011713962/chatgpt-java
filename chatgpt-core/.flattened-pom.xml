@@ -27,5 +27,10 @@
       <artifactId>chatgpt-api</artifactId>
       <version>${revision}</version>
     </dependency>
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>29.0-jre</version>
+    </dependency>
   </dependencies>
 </project>

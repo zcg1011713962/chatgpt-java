@@ -6,7 +6,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.asynchttpclient.AsyncHttpClient;
 import org.asynchttpclient.DefaultAsyncHttpClient;
 import org.asynchttpclient.DefaultAsyncHttpClientConfig;
-import org.asynchttpclient.proxy.ProxyServer;
 
 import javax.net.ssl.SSLException;
 import java.util.concurrent.ThreadFactory;
