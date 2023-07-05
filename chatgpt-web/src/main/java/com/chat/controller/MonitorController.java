@@ -29,7 +29,6 @@ public class MonitorController {
     @SentinelResource(value = "chatCount", entryType = EntryType.IN, blockHandler = "monitorExceptionHandler")
     public Mono<BaseResponse<JSONObject>> chatCount() {
         Object count = redisUtil.get(ApiEmu.CHAT.getDescribe());
-        log.info("chatCount:{}", count);
         JSONObject json = new JSONObject();
         json.set("count", count == null ? 0 : count);
         BaseResponse baseResponse = new BaseResponse.Builder()
