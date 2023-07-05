@@ -1,5 +1,7 @@
 package com.chat.controller;
 
+import com.alibaba.csp.sentinel.EntryType;
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.chat.annotation.ApiMonitor;
 import com.chat.bean.BaseResponse;
 import com.chat.bean.ImageRequest;

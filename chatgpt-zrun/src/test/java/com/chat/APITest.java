@@ -9,8 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import javax.annotation.Resource;
 
 @Slf4j
-@SpringBootTest(classes = APITest.class )
-public class APITest{
+public class APITest extends BaseTest{
     @Resource
     private ChatService<Response> chatService;
 
