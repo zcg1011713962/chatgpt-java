@@ -56,9 +56,6 @@ chatgpt-boodstrap/js/chat.js
 var api_address // API接口地址 
 ```
 
-```
-
-![1682862714858](assets/1682862714858.png)
 
 3.运行chatgpt-boodstrap/chat.html
 
