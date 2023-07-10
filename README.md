@@ -57,8 +57,6 @@ var api_address // API接口地址
 ```
 
 ```
-var token // openai鉴权token
-```
 
 ![1682862714858](assets/1682862714858.png)
 
